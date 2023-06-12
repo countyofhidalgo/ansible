@@ -1,0 +1,11 @@
+---
+- hosts: all
+  tasks:
+    - name: Install NotePad ++
+      win_package:
+        path: https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.5.3/npp.8.5.3.Installer.x64.exe
+        #product_id: '{CF2BEA3C-26EA-32F8-AA9B-331F7E34BA97}'
+        arguments:
+        - /install
+        - /passive
+        - /norestart
