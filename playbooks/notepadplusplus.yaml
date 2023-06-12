@@ -1,11 +1,22 @@
 ---
-- hosts: all
+- name: Install NotePad++
+  hosts: all
+  gather_facts: false
+
   tasks:
-    - name: Install NotePad ++
+    - name: Download NotePad++ installer
+      win_get_url:
+        url: https://download.notepad-plus-plus.org/repository/7.x/7.9.5/npp.7.9.5.Installer.exe
+        # url: https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.5.3/npp.8.5.3.Installer.x64.exe
+        dest: C:\Temp\npp_installer.exe
+
+    - name: Install NotePad++
       win_package:
-        path: https://objects.githubusercontent.com/github-production-release-asset-2e65be/33014811/69ba5775-e102-4388-849e-6f9d94c01046?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230612%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230612T202038Z&X-Amz-Expires=300&X-Amz-Signature=7facb3ad53d73a4d576939e6f66195976aeec92f23f1aa727e72643665679e52&X-Amz-SignedHeaders=host&actor_id=134895950&key_id=0&repo_id=33014811&response-content-disposition=attachment%3B%20filename%3Dnpp.8.5.3.Installer.x64.exe&response-content-type=application%2Foctet-stream
-        #product_id: '{CF2BEA3C-26EA-32F8-AA9B-331F7E34BA97}'
-        arguments:
-        - /install
-        - /passive
-        - /norestart
+        path: C:\Temp\npp_installer.exe
+        arguments: '/S'
+        creates_path: false
+
+    - name: Remove NotePad++ installer
+      win_file:
+        path: C:\Temp\npp_installer.exe
+        state: absent
