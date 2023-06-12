@@ -7,15 +7,16 @@
     - name: Download NotePad++ installer
       ansible.windows.win_get_url:
         url: https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.5.3/npp.8.5.3.Installer.x64.exe
-        dest: C:\Temp\npp_installer.exe
+        # dest: C:\Temp\npp_installer.exe
+        dest: \\{host}\c$\Temp\npp_installer.exe
 
-    - name: Install NotePad++
-      ansible.windows.win_package:
-        path: C:\Temp\npp_installer.exe
-        arguments: '/S'
-        creates_path: false
+    # - name: Install NotePad++
+    #   ansible.windows.win_package:
+    #     path: C:\Temp\npp_installer.exe
+    #     arguments: '/S'
+    #     creates_path: false
 
-    - name: Remove NotePad++ installer
-      ansible.windows.win_file:
-        path: C:\Temp\npp_installer.exe
-        state: absent
+    # - name: Remove NotePad++ installer
+    #   ansible.windows.win_file:
+    #     path: C:\Temp\npp_installer.exe
+    #     state: absent
