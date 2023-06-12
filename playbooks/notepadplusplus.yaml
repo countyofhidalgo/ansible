@@ -15,7 +15,7 @@
         arguments: '/S'
         creates_path: false
 
-    # - name: Remove NotePad++ installer
-    #   ansible.windows.win_file:
-    #     path: C:\Temp\npp_installer.exe
-    #     state: absent
+    - name: Remove NotePad++ installer
+      ansible.windows.win_file:
+        path: C:\Temp\npp_installer.exe
+        state: absent
