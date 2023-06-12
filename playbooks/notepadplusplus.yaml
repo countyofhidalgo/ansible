@@ -6,7 +6,6 @@
   tasks:
     - name: Download NotePad++ installer
       win_get_url:
-        # url: https://download.notepad-plus-plus.org/repository/7.x/7.9.5/npp.7.9.5.Installer.exe
         url: https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.5.3/npp.8.5.3.Installer.x64.exe
         dest: C:\Temp\npp_installer.exe
 
