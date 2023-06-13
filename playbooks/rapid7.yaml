@@ -1,0 +1,10 @@
+---
+- hosts: all
+  tasks:
+    - name: Install Rapid7 agent
+      win_package:
+        path: \\10.1.1.31\goverlan$\AppToInstall\rapid7\agentInstaller-x86_64.msi
+        product_id: Rapid7
+        arguments: /quiet CUSTOMTOKEN=us:59661bf9-8091-40ce-baa2-9960ad592f49
+        state: present
+        
